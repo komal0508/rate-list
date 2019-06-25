@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize'); // Node Module used for DB queries ( https://www.npmjs.com/package/sequelize )
-const db = require('../config/db');
+const db = require('../../src/config/db');
 
 
 const Test = db.define('test', {

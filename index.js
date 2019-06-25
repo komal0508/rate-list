@@ -18,8 +18,8 @@ const fs = require('fs');
 const app = express();
 const hostname = '127.0.0.1';
 const port = 3000;
-const db = require('./config/db');
-const config = require('./config/config.js');
+const db = require('./src/config/db');
+const config = require('./src/config/config.js');
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -31,9 +31,10 @@ app.use((req, res, next) => {
 });
 
 
-fs.readdirSync(`${__dirname}/controllers`).forEach((file) => {
+fs.readdirSync(`${__dirname}/src/controllers`).forEach((file) => {
+  console.log('dir name!!', file);
   if (file.substr(-3) === '.js') {
-    const pathToController = `${__dirname}/controllers/${file}`;
+    const pathToController = `${__dirname}/src/controllers/${file}`;
     console.log(pathToController, 'pathToController');
     router = require(pathToController)(app);
     app.use(pathToController, rMyRoute);
